@@ -2,10 +2,13 @@ services:
   postgres:
     image: postgres
     container_name: lr-db
+    ports:
+      - 8080:5432
     env_file:
       - .env
     environment:
       POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+
       POSTGRES_USER: "${POSTGRES_USER}"
       POSTGRES_DB: "${POSTGRES_DB}"
       command: "postgres; pg_ctl -D /var/lib/postgresql/data -l logfile start"
